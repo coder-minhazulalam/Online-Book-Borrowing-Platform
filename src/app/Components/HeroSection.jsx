@@ -50,7 +50,7 @@ const HeroSection = () => {
       </div>
 
       <div
-        className="h-[300px] md:h-[400px]  w-full max-w-[500px] overflow-hidden rounded-[30px] bg-cover bg-center shadow-lg"
+        className="h-[300px] md:h-[400px]   w-full max-w-[500px] overflow-hidden rounded-[30px] bg-cover bg-center shadow-lg"
         style={{
           backgroundImage: `url(${book.src})`,
         }}

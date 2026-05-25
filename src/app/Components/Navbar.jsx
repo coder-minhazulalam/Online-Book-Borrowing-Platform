@@ -1,5 +1,4 @@
 "use client";
-
 import { Link, Button } from "@heroui/react";
 import { useState } from "react";
 import logo from "@/assets/logo.png";
@@ -15,7 +14,7 @@ const Navbar = () => {
       <header className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
         {/* Left Side */}
-        <div className="flex items-center gap-3">
+        <div className="w-full md:w-auto flex flex-row justify-between md:justify-start items-center ">
 
           {/* Mobile Menu Button */}
           <button
@@ -25,8 +24,10 @@ const Navbar = () => {
           >
             {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
+         <div>
 
-          {/* Desktop Logo */}
+         </div>
+                  {/* Desktop Logo */}
           <Image
             src={logo}
             alt="BookLoop Logo"
@@ -36,13 +37,14 @@ const Navbar = () => {
           />
 
           {/* Mobile Logo */}
-          {/* <Image
+          <Image
             src={logo}
             alt="BookLoop Logo"
-            width={140}
-            height={70}
+            width={160}
+            height={100}
             className="block object-contain md:hidden"
-          /> */}
+          />
+ 
         </div>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -81,7 +83,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="border-t border-purple-500 bg-slate-200 px-6 py-4 md:hidden">
+        <div className="border-t border-purple-500 bg-[#063970] px-6 py-4 md:hidden">
           <ul className="flex flex-col gap-4 text-white">
             <li>
               <NavLink href="/"  >  
