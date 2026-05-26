@@ -43,14 +43,14 @@ const HeroSection = () => {
     </div>
 
     {/* Right Side Image */}
-    <div className="relative   pt-6 md:pt-0   flex justify-center lg:justify-end">
+    <div className="relative   pt-6 pb-6 md:pt-0  md:pb-0  flex justify-center lg:justify-end">
 
       <div className="absolute  left-[1vw] md:left-[15vw] lg:left-[4vw] lg:-top-3 z-10 rounded-2xl  animate-bounce bg-yellow-400 p-3 shadow-lg">
         <BookOpen className="text-black " size={28} />
       </div>
 
       <div
-        className="h-[300px] md:h-[400px]   w-full max-w-[500px] overflow-hidden rounded-[30px] bg-cover bg-center shadow-lg"
+        className="h-[300px] md:h-[400px]  md:p-0  w-full max-w-[500px] overflow-hidden rounded-[30px] bg-cover bg-center shadow-lg"
         style={{
           backgroundImage: `url(${book.src})`,
         }}

@@ -1,10 +1,11 @@
 "use client";
-import { Link, Button } from "@heroui/react";
+import {  Button } from "@heroui/react";
 import { useState } from "react";
 import logo from "@/assets/logo.png";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { NavLink } from "./Navlink";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,7 +59,7 @@ const Navbar = () => {
 
           <li>
             <NavLink
-              href="/books" 
+              href="/all-books" 
             >
               All Books
             </NavLink>
@@ -75,9 +76,12 @@ const Navbar = () => {
 
         {/* Right Side */}
         <div className="hidden items-center gap-4 md:flex">
+        <Link href='/login'>
           <Button className="rounded-full bg-yellow-400 px-6 font-semibold text-black hover:bg-yellow-300">
             Login
           </Button>
+        </Link>
+
         </div>
       </header>
 
@@ -92,7 +96,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <NavLink href="/books" >
+              <NavLink href="/all-books" >
                 All Books
               </NavLink>
             </li>
@@ -103,9 +107,12 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <Button className="mt-2 rounded-full bg-yellow-400 font-semibold text-black">
+               <Link href='/login'>
+                            <Button className="mt-2 rounded-full bg-yellow-400 font-semibold text-black">
               Login
             </Button>
+               </Link>
+
           </ul>
         </div>
       )}
