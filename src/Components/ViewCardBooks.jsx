@@ -2,17 +2,11 @@ import { ChevronRight } from 'lucide-react';
 import { NavLink } from './Navlink';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const getData = async() =>
-{
-    const res = await fetch("http://localhost:5000/books")
-    const data = await res.json()
-    return data;
-}
-
+import { getData } from '@/Data/Data';
+import LeftSideCategorisBook from './LeftSideCategorisBook';
 
 const ViewCardBooks = async() => {
-    const data = await getData();   
+    const data = await getData() ;   
     return (
         <>
 
@@ -47,9 +41,7 @@ const ViewCardBooks = async() => {
       
     {data.slice(0, 3).map((item) => (
       <div
-        key={item.id}
-        className="bg-white rounded-lg shadow-md overflow-hidden transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
-      >
+        key={item.id}  className="bg-white rounded-lg shadow-md overflow-hidden transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
         <Image
           src={item.image_url}
           alt={item.title}

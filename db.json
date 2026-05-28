@@ -228,5 +228,21 @@
       "award": "Future Science Book Award",
       "tags": ["Biology", "Genetics"]
     }
+  ] ,
+
+  "category" :
+  [
+      {
+    "category": "Story",
+    "id": "101"
+  },
+  {
+    "category": "Science",
+    "id": "102"
+  },
+  {
+    "category": "Tech",
+    "id": "103"
+  }
   ]
 }
