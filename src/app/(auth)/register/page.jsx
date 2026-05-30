@@ -4,14 +4,19 @@ import Link from 'next/link';
 import {Form, TextField, Label, Input, FieldError, Button } from 'react-aria-components';
 import { FaGoogle } from 'react-icons/fa';
 
-const LoginPage = () => {
+const RegisterPage = () => {
 
-    const handleLogin = (e) => {
-        e.preventDefault(); 
+
+
+    const handleRegister = (e) => {
+
+        e.preventDefault();
+        
+        const name = e.target["name"].value;
         const email = e.target["email"].value;
         const password = e.target["password"].value;
- 
-        console.log( email, password);
+        const img = e.target["img"].value;
+        console.log(name, email, password, img);
         
     };
 
@@ -21,11 +26,8 @@ const LoginPage = () => {
 
 
 
-
-
-
-
-    return (
+    
+  return (
     <div className="relative h-[850px] bg-[#f4f4f7]">
       {/* Top Background */}
       <div className="w-full h-[230px] md:h-[350px] bg-[#5a2dbd] rounded-b-[25%]" />
@@ -42,11 +44,31 @@ const LoginPage = () => {
           </p>
         </div>
 
+        {/* Google Button */}
+        <button className="w-full border space-x-2 flex justify-center items-center gap-2 border-gray-300 rounded-full py-2 text-sm font-medium hover:bg-gray-50 transition">
+          <FaGoogle /> Sign Up With Google
+        </button>
 
-
+        {/* Divider */}
+        <div className="flex items-center gap-3 my-3">
+          <div className="h-[1px] bg-gray-200 flex-1" />
+          <p className="text-xs text-gray-400">OR USE EMAIL</p>
+          <div className="h-[1px] bg-gray-200 flex-1" />
+        </div>
 
         {/* Form */}
-        <Form className="space-y-2" onSubmit={handleLogin}>
+        <Form className="space-y-2" onSubmit={handleRegister}>
+          <TextField>
+            <Label className="text-sm font-medium text-gray-700">
+              Full Name
+            </Label>
+            <Input
+                name="name"
+              className="w-full mt-1 rounded-full border border-border/60 px-4 py-3 outline-none focus:ring-2 focus:ring-[#5a2dbd]"
+              placeholder="John Doe"
+            />
+            <FieldError className="text-xs text-red-500" />
+          </TextField>
 
           <TextField>
             <Label className="text-sm font-medium text-gray-700">
@@ -60,7 +82,17 @@ const LoginPage = () => {
             <FieldError className="text-xs text-red-500" />
           </TextField>
 
-
+          <TextField>
+            <Label className="text-sm font-medium text-gray-700">
+              Avatar URL (Optional)
+            </Label>
+            <Input
+                name="img"
+              className="w-full mt-1 rounded-full border border-border/60 px-4 py-3 outline-none focus:ring-2 focus:ring-[#5a2dbd]"
+              placeholder="https://image-link.com/avatar.jpg"
+            />
+            <FieldError className="text-xs text-red-500" />
+          </TextField>
 
           <TextField>
             <Label className="text-sm font-medium text-gray-700">
@@ -75,42 +107,24 @@ const LoginPage = () => {
             <FieldError className="text-xs text-red-500" />
           </TextField>
 
-          <Button className="w-full bg-yellow-400 hover:bg-yellow-500 transition rounded-full py-3 font-semibold text-black mt-2">
-            Login
+          <Button type='submit' className="w-full bg-yellow-400 hover:bg-yellow-500 transition rounded-full py-3 font-semibold text-black mt-2">
+            Register
           </Button>
         </Form>
 
-                {/* Divider */}
-        <div className="flex items-center gap-3 my-3">
-          <div className="h-[1px] bg-gray-200 flex-1" />
-          <p className="text-xs text-gray-400">OR</p>
-          <div className="h-[1px] bg-gray-200 flex-1" />
-        </div>
-                {/* Google Button */}
-        {/* Google Button */}
-        <button type='submit' className="w-full border space-x-2 flex justify-center items-center gap-2 border-gray-300 rounded-full py-2 text-sm font-medium hover:bg-gray-50 transition">
-          <FaGoogle /> Sign Up With Google
-        </button>
-
-                {/* Divider */}
-            <div className="flex items-center gap-3 my-3">
-            <div className="h-[1px] bg-gray-200 flex-1" />
-            </div>
-
-
         {/* Login */}
         <p className="text-center text-sm text-gray-500 mt-5">
-          Not Registered?{' '}
-          <Link href='/register'>
+          Already member?{' '}
+          <Link href='/login'>
           <span className="text-[#5a2dbd] font-medium cursor-pointer">
-            Register
+            Login
           </span>
           </Link>
 
         </p>
       </div>
     </div>
-    );
+  );
 };
 
-export default LoginPage;
+export default RegisterPage;
