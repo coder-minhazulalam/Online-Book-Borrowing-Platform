@@ -25,16 +25,22 @@ const LeftSideCategorisBook = () => {
         ☰ Filters
       </h2>
 
-      <button className="w-full bg-[#6C4ED9] text-white rounded-xl py-3 px-4 flex justify-between mb-5">
+      
+      <Link  href={`/all-books`}>
+      <button className="w-full bg-[#6C4ED9] text-white rounded-xl py-3 px-4 flex justify-between mb-5 hover:bg-[#3c099c]">
         All Categories
         <span>›</span>
       </button>
+      </Link>
+
 
       <ul className="space-y-4">
         {data.map((item) => (
           <li key={item.id}>
-            <Link href={`/category/${item.category}`}>
-              {item.category}
+            <Link href={`/categories/${item.category_id}`}>
+             <button className="w-full text-left py-2 px-4 hover:bg-[#D1C4E9] rounded-lg">
+               {item.category}
+             </button>
             </Link>
           </li>
         ))}

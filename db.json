@@ -229,20 +229,22 @@
       "tags": ["Biology", "Genetics"]
     }
   ] ,
-
-  "category" :
-  [
-      {
-    "category": "Story",
-    "id": "101"
-  },
-  {
-    "category": "Science",
-    "id": "102"
-  },
-  {
-    "category": "Tech",
-    "id": "103"
-  }
+  "categories": [
+    {
+      "id": 1,
+      "category_id": "Story",
+      "category": "Story"
+    },
+    {
+      "id": 2,
+      "category_id": "Tech",
+      "category": "Tech"
+    },
+    {
+      "id": 3,
+      "category_id": "Science",
+      "category": "Science"   
+    }
   ]
+
 }
