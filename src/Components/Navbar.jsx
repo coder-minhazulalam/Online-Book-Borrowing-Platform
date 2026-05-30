@@ -67,7 +67,7 @@ const Navbar = () => {
 
           <li>
             <NavLink
-              href="/profile" 
+              href="/my-profile" 
             >
               My Profile
             </NavLink>
@@ -102,13 +102,13 @@ const Navbar = () => {
             </li>
 
             <li>
-              <NavLink href="/profile" >
+              <NavLink href="/my-profile" >
                 My Profile
               </NavLink>
             </li>
 
                <Link href='/login'>
-                            <Button className="mt-2 rounded-full bg-yellow-400 font-semibold text-black">
+          <Button className="mt-2 rounded-full bg-yellow-400 font-semibold text-black">
               Login
             </Button>
                </Link>
