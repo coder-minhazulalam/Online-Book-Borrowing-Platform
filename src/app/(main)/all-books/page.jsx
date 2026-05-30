@@ -53,7 +53,7 @@ const AllBooksPage = ({category_id}) => {
 
   return (
     <div className=" min-h-screen  bg-[#ececf1]">
-      <div className="w-full h-[200px] md:h-[350px] bg-[#063970] rounded-b-[25%] flex flex-col  items-center justify-start text-center ">
+      <div className="w-full h-[230px] md:h-[350px] bg-[#063970] rounded-b-[25%] flex flex-col  items-center justify-start text-center ">
         <div className="mt-20">
           <h1 className="font-bold text-[20px] md:text-[35px] text-white text-center">
             Discover Your Next Adventure
@@ -66,7 +66,7 @@ const AllBooksPage = ({category_id}) => {
           <Input
             aria-label="Name"
             name="name"
-            className="w-[300px] md:w-[550px] h-10 md:h-13 rounded-[50px] border-2 border-solid border-yellow-600 pl-12"
+            className="w-[240px] md:w-[550px] h-10 md:h-13 rounded-[50px] border-2 border-solid border-yellow-600 pl-12"
             placeholder="Search..."
           />
 
@@ -79,8 +79,8 @@ const AllBooksPage = ({category_id}) => {
         </Form>
       </div>
 
-      <div className="mt-20 w-full  md:w-12/13 mx-auto grid grid-cols-1 md:grid-cols-8 gap-5 mt-4">
-        <div className="col-span-1 md:col-span-2">
+      <div className="mt-20  w-12/13 mx-auto grid grid-cols-1 md:grid-cols-8 gap-5 mt-4">
+        <div className="md:w-o mx-auto col-span-1 md:mx-0 md:col-span-2">
           <LeftSideCategorisBook />
         </div>
 
@@ -91,7 +91,7 @@ const AllBooksPage = ({category_id}) => {
           {data.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-lg border-2 border-solid border-yellow-500 shadow-md overflow-hidden transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+              className="bg-white rounded-lg border-2 border-solid border-yellow-500 shadow-md overflow-hidden transition delay-150 duration-300 ease-in-out md:hover:-translate-y-0 hover:scale-0 md:hover:-translate-y-1 hover:scale-110"
             >
               <Image
                 src={item.image_url}
