@@ -1,29 +1,70 @@
 'use client';
 
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import {Form, TextField, Label, Input, FieldError, Button } from 'react-aria-components';
+import {Form, TextField, Label, Input, Button } from 'react-aria-components';
+import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
+import { toast, Slide , Flip } from "react-toastify";
+
 
 const LoginPage = () => {
 
-    const handleLogin = (e) => {
-        e.preventDefault(); 
-        const email = e.target["email"].value;
-        const password = e.target["password"].value;
- 
-        console.log( email, password);
+  const { register, handleSubmit , watch , formState: { errors } } = useForm();
+   
+    const handleLogin = async(DATA) => {
+
+         const {email , password } = DATA
+           console.log({email , password } )
+
+
+   const { data : res , error } = await authClient.signIn.email({
+    email: email, 
+    password: password, 
+    rememberMe: true,
+    callbackURL: "/",
+    });
+
+    console.log("Login Response:", res);
+    console.log("Login Error:", error);
+
+
+    if(error){   
+      toast.error("Wrong Attempt! Please try again", {
+                    position: "top-center",
+                    autoClose: 1300,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Slide ,
+                    });
         
+        return;
+    }
+    else{
+        toast.success("You are successfully Login", {
+                      position: "top-center",
+                      autoClose: 1300,
+                      hideProgressBar: false,
+                      closeOnClick: false,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                      transition: Flip ,
+                      });
+    }
+
+
+
+
+
+
+
     };
-
-
-
-
-
-
-
-
-
-
 
     return (
     <div className="relative h-[850px] bg-[#f4f4f7]">
@@ -46,7 +87,7 @@ const LoginPage = () => {
 
 
         {/* Form */}
-        <Form className="space-y-2" onSubmit={handleLogin}>
+        <Form className="space-y-2" onSubmit={handleSubmit(handleLogin)}>
 
           <TextField>
             <Label className="text-sm font-medium text-gray-700">
@@ -56,8 +97,22 @@ const LoginPage = () => {
               name="email"
               className="w-full mt-1 rounded-full border border-border/60 px-4 py-3 outline-none focus:ring-2 focus:ring-[#5a2dbd]"
               placeholder="student@gmail.com"
+              {...register("email",
+              {
+                required: "Email is required",
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Invalid email address"
+                }
+              })}
             />
-            <FieldError className="text-xs text-red-500" />
+
+            {
+              errors.email && 
+              <span className="text-red-500 text-sm">{errors.email.message}</span>
+            }
+
+
           </TextField>
 
 
@@ -71,11 +126,25 @@ const LoginPage = () => {
               type="password"
               className="w-full mt-1 rounded-full border border-border/60 px-4 py-3 outline-none focus:ring-2 focus:ring-[#5a2dbd]"
               placeholder="••••••••"
+
+              {...register("password",
+              {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters"
+                }
+              })}
             />
-            <FieldError className="text-xs text-red-500" />
+
+            {
+              errors.password && 
+              <span className="text-red-500 text-sm">{errors.password.message}</span>
+            }
+
           </TextField>
 
-          <Button className="w-full bg-yellow-400 hover:bg-yellow-500 transition rounded-full py-3 font-semibold text-black mt-2">
+          <Button type="submit" className="w-full bg-yellow-400 hover:bg-yellow-500 transition rounded-full py-3 font-semibold text-black mt-2">
             Login
           </Button>
         </Form>

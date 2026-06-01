@@ -10,16 +10,21 @@
     "server": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
-    "@gravity-ui/uikit": "^7.39.0",
+    "@better-auth/mongo-adapter": "^1.6.12",
     "@heroui/react": "^3.0.5",
     "@heroui/styles": "^3.0.5",
+    "better-auth": "^1.6.12",
     "json-server": "^1.0.0-beta.15",
+    "kysely": "^0.28.5",
     "lucide-react": "^1.16.0",
+    "mongodb": "^7.2.0",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-hook-form": "^7.76.1",
     "react-icons": "^5.6.0",
-    "react-marquee-text": "^1.0.6"
+    "react-marquee-text": "^1.0.6",
+    "react-toastify": "^11.1.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

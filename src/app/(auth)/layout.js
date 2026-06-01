@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 
 
 const layout = ({ children }) => {
@@ -6,6 +7,7 @@ const layout = ({ children }) => {
         <main>
             {children}
         </main>
+         <ToastContainer />
         </>
 
     );

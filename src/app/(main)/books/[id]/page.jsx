@@ -4,7 +4,7 @@ const BooksDetailsPage = async({params}) => {
 
     const { id } = await params;
 
-    const res = await fetch(`http://localhost:5000/books/${id}`);
+    const res = await fetch(`https://online-book-borrowing-server.onrender.com/books/${id}`);
     const bookDetails = await res.json();
 
     if (!bookDetails) {

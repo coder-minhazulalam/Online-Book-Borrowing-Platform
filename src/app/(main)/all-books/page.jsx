@@ -66,13 +66,13 @@ const AllBooksPage = ({category_id}) => {
           <Input
             aria-label="Name"
             name="name"
-            className="w-[240px] md:w-[550px] h-10 md:h-13 rounded-[50px] border-2 border-solid border-yellow-600 pl-12"
+            className="w-[300px] md:w-[550px] h-10 md:h-13 rounded-[50px] border-2 border-solid border-yellow-600 pl-12"
             placeholder="Search..."
           />
 
           <Button
             type="submit"
-            className="bg-yellow-400 absolute left-110 top-1/2 -translate-y-1/2 text-gray-500 text-xl"
+            className="bg-yellow-400 absolute hidden md:block md:left-110 top-1/2 -translate-y-1/2 text-gray-500 text-xl"
           >
             Submit
           </Button>

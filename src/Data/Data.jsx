@@ -1,6 +1,6 @@
 export const getData = async() =>
 {
-    const res = await fetch("http://localhost:5000/books")
+    const res = await fetch("https://online-book-borrowing-server.onrender.com/books")
     const data = await res.json()
     return data;
 }
@@ -9,7 +9,7 @@ export const getData = async() =>
 
 export const getCategory = async() =>
 {
-    const res = await fetch("http://localhost:5000/categories")
+    const res = await fetch("https://online-book-borrowing-server.onrender.com/categories")
     const data = await res.json()
     return data;
 }
