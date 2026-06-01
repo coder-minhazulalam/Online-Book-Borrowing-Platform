@@ -62,8 +62,9 @@ const LoginPage = () => {
         
         return;
     }
-    else{
-        toast.success("You are successfully Login", {
+   
+        
+    toast.success("You are successfully Login", {
                       position: "top-center",
                       autoClose: 1300,
                       hideProgressBar: false,
@@ -74,7 +75,11 @@ const LoginPage = () => {
                       theme: "light",
                       transition: Flip ,
                       });
-    }
+
+                      setTimeout(() => {
+                        window.location.href = "/";
+                      }, 1500);
+  
 
 
 
@@ -144,7 +149,6 @@ const LoginPage = () => {
                 type={isVisible ? "text" : "password"}
               className="w-full relative mt-1 rounded-full border border-border/60 px-4 py-3 outline-none focus:ring-2 focus:ring-[#5a2dbd]"
               placeholder="Enter your password"
-             
 
               {...register("password",
               {

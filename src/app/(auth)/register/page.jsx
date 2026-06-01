@@ -43,7 +43,7 @@ const RegisterPage = () => {
             return;
         }
 
-        toast.success("🎉 Account created successfully! Please login.", {
+        toast.success("Account created successfully! Please login.", {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: false,
@@ -54,7 +54,7 @@ const RegisterPage = () => {
             transition: Flip,
         });
 
-        setTimeout(() => router.push('/login'), 2100);
+        setTimeout(() => router.push('/'), 2100);
     };
 
 
