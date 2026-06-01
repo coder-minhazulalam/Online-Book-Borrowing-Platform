@@ -11,9 +11,11 @@ const Footer = () => {
           {/* Left Side */}
           <div className="space-y-6 flex flex-col justify-between h-full">
             <div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-[#2e2ea8] tracking-tight">
-                BOOK<span className="text-[#792CA2]">LOOP</span>
-              </h2>
+
+
+          <h1 className="text-4xl sm:text-5xl font-bold text-[#2e2ea8] tracking-tight">
+            BOOK<span className="text-pink-500">LOOP</span>
+          </h1>
 
               <p className="text-gray-700 mt-4 text-sm sm:text-base leading-relaxed max-w-md">
                 Discover, borrow, and explore your favorite books with

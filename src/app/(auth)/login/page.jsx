@@ -1,14 +1,32 @@
 'use client';
 
 import { authClient } from '@/lib/auth-client';
+import { Eye } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
 import {Form, TextField, Label, Input, Button } from 'react-aria-components';
 import { useForm } from 'react-hook-form';
+import { BsEyeSlash } from 'react-icons/bs';
 import { FaGoogle } from 'react-icons/fa';
 import { toast, Slide , Flip } from "react-toastify";
 
 
 const LoginPage = () => {
+
+   const [isVisible, setIsVisible] = useState(false);
+
+      //  Google Sign-In
+    const handleGoogleSignIn = async () => {
+            const data = await authClient.signIn.social({
+            provider: "google",
+          });
+
+        console.log("Google Sign-In Response:", data);
+     }
+     
+
+
+
 
   const { register, handleSubmit , watch , formState: { errors } } = useForm();
    
@@ -123,9 +141,10 @@ const LoginPage = () => {
             </Label>
             <Input
                 name="password"
-              type="password"
-              className="w-full mt-1 rounded-full border border-border/60 px-4 py-3 outline-none focus:ring-2 focus:ring-[#5a2dbd]"
-              placeholder="••••••••"
+                type={isVisible ? "text" : "password"}
+              className="w-full relative mt-1 rounded-full border border-border/60 px-4 py-3 outline-none focus:ring-2 focus:ring-[#5a2dbd]"
+              placeholder="Enter your password"
+             
 
               {...register("password",
               {
@@ -136,6 +155,17 @@ const LoginPage = () => {
                 }
               })}
             />
+
+          <Button
+            isIconOnly
+            aria-label={isVisible ? "Hide password" : "Show password"}
+            size="sm"
+            variant="ghost"
+            onPress={() => setIsVisible(!isVisible)}
+            className="absolute right-15 top-[50%] -translate-y-[50%] text-gray-500 hover:text-gray-700"
+          >
+            {isVisible ? <Eye className="size-4" /> : <BsEyeSlash className="size-4" />}
+          </Button>
 
             {
               errors.password && 
@@ -157,7 +187,7 @@ const LoginPage = () => {
         </div>
                 {/* Google Button */}
         {/* Google Button */}
-        <button type='submit' className="w-full border space-x-2 flex justify-center items-center gap-2 border-gray-300 rounded-full py-2 text-sm font-medium hover:bg-gray-50 transition">
+        <button  type='submit' className="w-full border space-x-2 flex justify-center items-center gap-2 border-gray-300 rounded-full py-2 text-sm font-medium hover:bg-gray-50 transition" onClick={handleGoogleSignIn}>
           <FaGoogle /> Sign Up With Google
         </button>
 

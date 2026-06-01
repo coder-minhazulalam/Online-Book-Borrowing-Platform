@@ -7,27 +7,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
+import { FaStar, FaBook, FaUserEdit, FaCalendarAlt } from "react-icons/fa";
 
-const AllBooksPage = ({category_id}) => {
-
+const AllBooksPage = ({ category_id }) => {
   const [data, setData] = useState([]);
-   const [ search , setSearch ] = useState([])
+  const [search, setSearch] = useState([]);
 
-   console.log("In All Book Page we get category_id" , category_id)
+  console.log("In All Book Page we get category_id", category_id);
 
-
-
-    // Search Books by Title or Author  ------------------
+  // Search Books by Title or Author  ------------------
 
   const handleSearch = (e) => {
     e.preventDefault();
 
     const search = e.target["name"].value;
     setSearch(search);
-    console.log(search)
+    console.log(search);
 
-
-    const filterBooks = data.filter((item) => item.title.toLowerCase().includes(search.toLowerCase()) || item.author.toLowerCase().includes(search.toLowerCase()))
+    const filterBooks = data.filter(
+      (item) =>
+        item.title.toLowerCase().includes(search.toLowerCase()) ||
+        item.author.toLowerCase().includes(search.toLowerCase()),
+    );
     setData(filterBooks);
 
     e.target.reset();
@@ -40,7 +41,7 @@ const AllBooksPage = ({category_id}) => {
       const result = await getData();
       if (category_id) {
         const filtered = result.filter(
-          (item) => item.category.toLowerCase() === category_id.toLowerCase()
+          (item) => item.category.toLowerCase() === category_id.toLowerCase(),
         );
         setData(filtered);
       } else {
@@ -85,46 +86,74 @@ const AllBooksPage = ({category_id}) => {
         </div>
 
         <div className="col-span-1 md:col-span-6 ">
-          <div className="w-full pt-5 pb-5 h-full  mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {data.map((item) => (
+              <div
+                key={item.id}
+                className="group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              >
+                <div className="bg-gray-50 p-4">
+                  <Image
+                    src={item.image_url}
+                    alt={item.title}
+                    width={400}
+                    height={600}
+                    className="w-full h-[260px] object-contain transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
 
-              
-          {data.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white rounded-lg border-2 border-solid border-yellow-500 shadow-md overflow-hidden transition delay-150 duration-300 ease-in-out md:hover:-translate-y-0 hover:scale-0 md:hover:-translate-y-1 hover:scale-110"
-            >
-              <Image
-                src={item.image_url}
-                alt={item.title}
-                width={400}
-                height={600}
-                className="w-full h-[300px] object-contain p-4 rounded-t-lg"
-              />
+                <div className="p-5 space-y-3">
+                  {/* Category */}
+                  <span className="inline-block px-3 py-1 text-xs font-semibold bg-yellow-100 text-yellow-700 rounded-full">
+                    {item.category}
+                  </span>
 
-              <div className="p-4">
-                <h3 className="text-lg font-bold text-gray-800">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600">by {item.author}</p>
-                <div>
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-gray-800 line-clamp-1">
+                    {item.title}
+                  </h3>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-2 text-gray-600 text-sm">
+                    <FaUserEdit />
+                    <span>{item.author}</span>
+                  </div>
+
+                  {/* Rating & Year */}
+                  <div className="flex justify-between items-center text-sm">
+                    <div className="flex items-center gap-1 text-amber-500">
+                      <FaStar />
+                      <span>{item.rating}</span>
+                    </div>
+
+                    <div className="flex items-center gap-1 text-gray-500">
+                      <FaCalendarAlt />
+                      <span>{item.published_year}</span>
+                    </div>
+                  </div>
+
+                  {/* Quantity */}
+                  <div className="flex items-center gap-2 text-sm text-green-600">
+                    <FaBook />
+                    <span>{item.available_quantity} Copies Available</span>
+                  </div>
+
+                  {/* Button */}
                   <Link href={`/books/${item.id}`}>
-                    <button className="bg-yellow-400 text-black px-5 py-3 rounded-full font-medium text-sm hover:scale-105 transition">
+                    <button className="w-full mt-3 bg-[#063970] text-white py-3 rounded-xl font-semibold hover:bg-[#052f5f] transition">
                       View Details
                     </button>
                   </Link>
                 </div>
               </div>
-            </div>
-          ))}
-
+            ))}
           </div>
-
         </div>
       </div>
 
-    <div className="mt-20">
-          <Footer />
-    </div>
+      <div className="mt-20">
+        <Footer />
+      </div>
     </div>
   );
 };

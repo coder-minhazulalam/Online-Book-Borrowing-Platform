@@ -3,7 +3,12 @@ import { NavLink } from './Navlink';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getData } from '@/Data/Data';
-import LeftSideCategorisBook from './LeftSideCategorisBook';
+import {
+  FaStar,
+  FaBook,
+  FaUserEdit,
+  FaCalendarAlt,
+} from "react-icons/fa";
 
 const ViewCardBooks = async() => {
     const data = await getData() ;   
@@ -41,34 +46,63 @@ const ViewCardBooks = async() => {
       
     {data.slice(0, 3).map((item) => (
       <div
-        key={item.id}  className="bg-white rounded-lg shadow-md overflow-hidden transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
-        <Image
-          src={item.image_url}
-          alt={item.title}
-          width={400}
-          height={600}
-          className="w-full h-[300px] object-contain p-4 rounded-t-lg"
-        />
+  key={item.id}
+  className="group bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+>
+  <div className="bg-gray-50 p-4">
+    <Image
+      src={item.image_url}
+      alt={item.title}
+      width={400}
+      height={600}
+      className="w-full h-[260px] object-contain transition-transform duration-300 group-hover:scale-105"
+    />
+  </div>
 
-        <div className="p-4">
-          <h3 className="text-lg font-bold text-gray-800">
-            {item.title}
-          </h3>
-          <p className="text-gray-600">
-            by {item.author}
-          </p>
-                  <div>
-            <Link href={`/books/${item.id}`}>
-              <button className="bg-yellow-400 text-black px-5 py-3 rounded-full font-medium text-sm hover:scale-105 transition">
-              View Details
-            </button>
-            </Link>
+  <div className="p-5 space-y-3">
+    {/* Category */}
+    <span className="inline-block px-3 py-1 text-xs font-semibold bg-yellow-100 text-yellow-700 rounded-full">
+      {item.category}
+    </span>
 
-        </div>
-        </div>
+    {/* Title */}
+    <h3 className="text-xl font-bold text-gray-800 line-clamp-1">
+      {item.title}
+    </h3>
 
+    {/* Author */}
+    <div className="flex items-center gap-2 text-gray-600 text-sm">
+      <FaUserEdit />
+      <span>{item.author}</span>
+    </div>
 
+    {/* Rating & Year */}
+    <div className="flex justify-between items-center text-sm">
+      <div className="flex items-center gap-1 text-amber-500">
+        <FaStar />
+        <span>{item.rating}</span>
       </div>
+
+      <div className="flex items-center gap-1 text-gray-500">
+        <FaCalendarAlt />
+        <span>{item.published_year}</span>
+      </div>
+    </div>
+
+    {/* Quantity */}
+    <div className="flex items-center gap-2 text-sm text-green-600">
+      <FaBook />
+      <span>{item.available_quantity} Copies Available</span>
+    </div>
+
+    {/* Button */}
+    <Link href={`/books/${item.id}`}>
+      <button className="w-full mt-3 bg-[#063970] text-white py-3 rounded-xl font-semibold hover:bg-[#052f5f] transition">
+        View Details
+      </button>
+    </Link>
+  </div>
+</div>
     ))}
     </div>
 
