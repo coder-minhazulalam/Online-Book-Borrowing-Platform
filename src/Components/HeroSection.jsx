@@ -26,7 +26,7 @@ const HeroSection = () => {
 
       <p className="mt-6 max-w-md text-sm leading-7 text-purple-100 md:text-base">
         Access thousands of digital and physical books from our
-        community library. Join StoryQuest and start your reading
+        community library. Join BookLoop and start your reading
         journey with just a click.
       </p>
 
